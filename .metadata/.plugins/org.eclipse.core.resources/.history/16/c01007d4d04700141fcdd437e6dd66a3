@@ -1,0 +1,19 @@
+package station;
+
+import client.Client;
+
+public class SeoulStation implements Station {
+	
+	
+	Client client;
+	
+	public SeoulStation(Client client) {
+		this.client = client;
+	}
+	
+	@Override
+	public void setStation() {
+		
+	}
+
+}

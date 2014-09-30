@@ -1,0 +1,57 @@
+package clerk;
+
+import client.AbstractClient;
+import client.StationClientQueue;
+
+public class BoxChecker implements Observer  {
+
+	// box를 돌면서 비어있는 곳이 있으면 바로 캐치해 고객들을 밀어넣는다.
+	// 얘가 고객큐에 접근할 수 있어야해..;ㅅ;
+	// 반대로 고객이 있는지도 알아야해..;ㅅ;
+	
+	private AbstractClient client = null;
+	private StationClientQueue stationQueue;
+	private TicketBox tb;
+	
+	public void setQueue(StationClientQueue stationQueue) {
+		this.stationQueue = stationQueue;
+		if ( stationQueue.isEmpty()) {System.out.println("BoxChecker.setQueue.if: 큐가 널임.");}
+		else {
+			System.out.println("BoxChecker.setQueue.if: 큐가 널이 아님.");
+			setClient(stationQueue.get(0));
+		}
+	}
+	
+	public void setClient(AbstractClient client) {
+		this.client =client;
+	}
+	
+	public void updateClient() {
+		try{
+			if(client.equals(null)) {
+				System.out.println("BoxChecker.setClient.if: 클라가 null임");
+			}
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			System.out.println("오늘은 아예 손님이 없나봅니다." );
+		}
+		
+		if (stationQueue.isEmpty()) {
+			System.out.println("해당 역에 아무런 승객이 없습니다.");
+			
+		} else {
+			client = stationQueue.targetClient();
+			client.print();
+		}
+	}
+
+	@Override
+	public void update(TicketBox ticketBox) {
+			this.tb = (TicketBox) ticketBox;
+			updateClient();
+			ticketBox.isCameCustomer(client);
+	}
+
+	
+	
+}

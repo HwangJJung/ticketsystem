@@ -1,0 +1,9 @@
+package station;
+
+public class ThreadingStationFactroy {
+	
+	
+	public Thread makeThread(Station station) {
+		return new Thread(station);
+	}
+}

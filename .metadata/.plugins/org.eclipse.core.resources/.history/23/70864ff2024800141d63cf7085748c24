@@ -1,0 +1,6 @@
+package station;
+
+public interface initializable {
+
+	public void initialize();
+}

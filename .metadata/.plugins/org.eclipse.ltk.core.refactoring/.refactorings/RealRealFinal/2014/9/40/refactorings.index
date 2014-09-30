@@ -2,3 +2,30 @@
 1411941409982	Move compilation units
 1411941452625	Move compilation units
 1411941619869	Rename package 'Client'
+1411990934331	Delete element
+1411991506113	Move compilation unit
+1411991958352	Delete element
+1411991966657	Rename compilation unit 'StationState.java'
+1411992284136	Rename type 'Station'
+1411992434837	Copy package
+1411992439677	Delete element
+1411992464590	Delete element
+1411998397335	Delete element
+1412010885041	Rename type 'ClientInterface'
+1412014255858	Rename type 'ClientSeter'
+1412019019897	Delete element
+1412020515348	Delete element
+1412021203809	Delete element
+1412023462325	Rename package 'error'
+1412023482037	Rename package 'Exception'
+1412023491193	Move compilation units
+1412026643525	Delete element
+1412026793237	Delete element
+1412026807038	Move compilation unit
+1412026818111	Move compilation units
+1412031138801	Rename field 'state'
+1412034542929	Rename type 'Subject'
+1412034580986	Rename type 'Overservable'
+1412053674475	Rename type 'Station'
+1412053809332	Rename type 'Thread'
+1412054611987	Delete element

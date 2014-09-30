@@ -1,0 +1,10 @@
+package station;
+
+public class NoEntryArrivalStationException extends NoEntryStationException {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 10L;
+
+}

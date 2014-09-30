@@ -1,0 +1,19 @@
+package temporary;
+
+import client.ClientQueue;
+import client.ClientSender;
+import client.ClientTimeChecker;
+
+public class Simulator {
+
+	public static void main(String[] args) {
+		
+		ClientQueue clientQueue = new ClientQueue();
+		ClientSender clientSender = new ClientSender();
+		
+		Thread th = new Thread(new ClientTimeChecker());
+		th.start();
+		
+	}
+
+}

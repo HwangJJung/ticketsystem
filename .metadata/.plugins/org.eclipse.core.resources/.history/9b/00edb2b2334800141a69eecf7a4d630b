@@ -1,0 +1,14 @@
+package clerk;
+
+public class Observable implements StateObservable{
+
+	Observer observer = new BoxChecker();
+	
+	
+	@Override
+	public void notifyObservers() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

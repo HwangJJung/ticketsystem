@@ -1,0 +1,28 @@
+package station;
+
+import java.util.HashSet;
+
+public class StationList implements initializable {
+
+	HashSet<Station> stationList = new HashSet<Station>();
+	
+	Array
+	
+	
+	
+	public void initialize() {
+		
+		stationList.add( new AsanStation());
+		stationList.add( new SeoulStation());
+		stationList.add( new GwangjuStation());
+		stationList.add( new ChuncheonStation());
+		stationList.add( new WonjuStation());
+		stationList.add( new GyeongjuStation());
+		stationList.add( new DaejeonStation());
+	}
+	
+	public void add(Station station) {
+		stationList.add( station);
+		stationList.
+	}
+}

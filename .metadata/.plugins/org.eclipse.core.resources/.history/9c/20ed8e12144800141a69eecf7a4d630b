@@ -1,0 +1,27 @@
+package client;
+
+import station.Station;
+import station.StationCollection;
+
+public class ClientSender {
+	
+	AbstractClient client;
+	StationCollection stationCollection;
+	Station station;
+	
+	public ClientSender() {
+		this.stationCollection  = new StationCollection();
+		stationCollection.initialize();
+	}
+	
+	
+	
+	public void sendClientToStation(AbstractClient client) {
+		
+		this.client = client;
+		String startStation = client.startStation;
+		station = stationCollection.getStation(startStation , true);
+		station.add(client);
+	}
+
+}

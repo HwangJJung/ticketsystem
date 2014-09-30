@@ -1,0 +1,15 @@
+package station;
+
+public class NoEntryStationException extends RuntimeException{
+	
+	
+	
+	NoEntryStationException() {
+		super();
+	}
+	
+	NoEntryStationException(String message) {
+		super(message);
+	}
+	
+}

@@ -1,0 +1,11 @@
+package station;
+
+public class SeoulStation implements Station {
+
+	@Override
+	public void setStation() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

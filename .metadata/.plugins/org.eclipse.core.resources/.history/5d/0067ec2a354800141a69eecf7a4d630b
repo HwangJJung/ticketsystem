@@ -1,0 +1,8 @@
+package clerk;
+
+public interface StateObservable {
+
+	public void notifyObservers();
+	public void isCameCustomer();
+	
+}

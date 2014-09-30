@@ -1,0 +1,18 @@
+package clerk;
+
+public class Observable implements StateObservable{
+
+	Observer observer = new BoxChecker();
+	StateObservable ticketBox;
+	
+	public Observable(StateObservable ticketBox) {
+		this.ticketBox = ticketBox;
+	}
+	
+	
+	@Override
+	public void notifyObservers() {
+		observer.update(ticketBox);
+	}
+
+}

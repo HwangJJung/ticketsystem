@@ -1,0 +1,22 @@
+package client;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class StationClientQueue {
+
+	public void Order() {
+		Iterator<StationClient> iterator = clients.iterator();
+		while (iterator.hasNext()) {
+			StationClient client = (StationClient)iterator.next();
+			// client.Order();
+		}
+	}
+
+	public void enterStation() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+}

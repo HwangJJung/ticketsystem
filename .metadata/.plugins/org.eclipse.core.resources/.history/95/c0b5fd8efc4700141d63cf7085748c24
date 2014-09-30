@@ -1,0 +1,27 @@
+package client;
+
+
+public class Client extends AbstractClient {
+	
+	
+	int arrivalTime;
+	String start;
+	String arrival;
+	
+	public Client(String name, int arrivalTime, int ticketingTime,
+			String startStation, String arrivalStation) {
+		this.name = name;
+		this.arrivalTime = arrivalTime;
+		this.ticketingTime = ticketingTime;
+		this.start = startStation;
+		this.arrival = arrivalStation;
+	}
+	
+	public int getArrivalTime() {
+		return arrivalTime;
+	}
+	
+	public void enterStation() {
+		
+	}
+}

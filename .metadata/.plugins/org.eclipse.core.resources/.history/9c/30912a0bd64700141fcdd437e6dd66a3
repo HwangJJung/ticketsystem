@@ -1,0 +1,73 @@
+package client;
+import station.StationFactory;
+import station.Station;
+
+
+
+public class Client {
+	
+	String name;
+	int arrivalTime;
+	int ticketingTime;
+	StationFactory startStation;
+	StationFactory arrivalStation;
+	Boolean isHadTicket;
+	String start;
+	String arrival;
+	
+	public Client(String name, int arrivalTime, int ticketingTime,
+			StationFactory startStation, StationFactory arrivalStation) {
+		this.name = name;
+		this.arrivalTime = arrivalTime;
+		this.ticketingTime = ticketingTime;
+		this.startStation = startStation;
+		this.arrivalStation = arrivalStation;
+		
+		this.isHadTicket = false;
+	}
+	
+	public Client(String name, int arrivalTime, int ticketingTime,
+			String startStation, String arrivalStation) {
+		this.name = name;
+		this.arrivalTime = arrivalTime;
+		this.ticketingTime = ticketingTime;
+		this.start = startStation;
+		this.arrival = arrivalStation;
+		this.isHadTicket = false;
+	}
+	
+	public int getArrivalTime() {
+		return arrivalTime;
+	}
+	
+
+	public void Order() {
+	}
+	
+	private station setStation(String start) {
+		switch(start) {
+		case "Seoul":
+			return new SeoulStation();
+		case "Chuncheon":
+			return new DaejeonStation();
+		case "Wonju":
+			return new WonjuStation();
+		case "Asan":
+			return new AsanStation();
+		case "Gwangju":
+			return new GwangjuStation();
+		case "Gyeongju":
+			return new GyeongjuStation();
+		default
+			return 
+		}
+		
+		
+		
+		
+    }
+	
+	public void enterStation() {
+		
+	}
+}

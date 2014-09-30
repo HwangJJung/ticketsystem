@@ -1,0 +1,34 @@
+package client;
+
+import java.util.Iterator;
+
+import clerk.TicketBox;
+
+public class StationClientQueue extends AbstractClientQueue{
+
+	
+	//이 클라이언트큐에서 각 티켓박스로 나를 받아달라고 요청할 수 있어야 한다.
+	
+	
+	public void Order(TicketBox ticketBox) {
+		int state = ticketBox.getState();
+		Iterator<AbstractClient> iterator = clients.iterator();
+		while (iterator.hasNext()) {
+			Client client = (Client)iterator.next();
+			 //  client.Order();
+		}
+	}
+
+	public void enterStation() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void initialize() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+}

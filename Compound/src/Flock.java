@@ -17,8 +17,7 @@ public class Flock implements Client {
 		Iterator<Client> iterator = quackers.iterator();
 		while (iterator.hasNext()) {
 			Client quacker = (Client)iterator.next();
-			quacker.quack();
-			
+			quacker.quack();	
 		}
 	}
 

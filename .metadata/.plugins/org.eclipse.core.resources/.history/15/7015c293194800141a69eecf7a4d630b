@@ -1,0 +1,17 @@
+package exception;
+
+public class NoEntryStartStationException extends Exception {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 11L;
+	NoEntryStartStationException() {
+		super();
+	}
+	
+	public NoEntryStartStationException(String message) {
+		super(message);
+	}
+	
+}

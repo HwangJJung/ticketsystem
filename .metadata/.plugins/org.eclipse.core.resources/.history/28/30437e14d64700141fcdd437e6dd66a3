@@ -1,0 +1,20 @@
+package station;
+
+public class SeoulStation implements StationFactory {
+	
+	
+	@Override
+	public Station setStartStation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Station setArrivalStation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+
+}

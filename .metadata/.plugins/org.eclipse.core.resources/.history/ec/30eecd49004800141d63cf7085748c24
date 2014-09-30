@@ -1,0 +1,10 @@
+package client;
+
+import org.apache.commons.lang3.time.StopWatch;
+
+public abstract class AbstractClient {
+
+	String name;
+	int ticketingTime;
+	StopWatch stopWatch;
+}

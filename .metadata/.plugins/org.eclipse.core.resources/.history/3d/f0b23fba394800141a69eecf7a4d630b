@@ -1,0 +1,12 @@
+package station;
+
+public class AsanStation extends Station {
+
+
+	@Override
+	void ThreadGroup(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

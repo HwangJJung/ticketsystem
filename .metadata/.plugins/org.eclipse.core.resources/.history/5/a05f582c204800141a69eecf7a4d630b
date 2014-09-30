@@ -1,0 +1,24 @@
+package temporary;
+
+import station.StationCollection;
+import client.AbstractClientQueue;
+import client.ClientQueue;
+import client.ClientSender;
+import client.ClientTimeChecker;
+
+public class Simulator {
+
+	public static void main(String[] args) {
+		
+		AbstractClientQueue clientQueue = new ClientQueue();
+		
+		StationCollection stationCollection = new StationCollection();
+		
+		ClientSender clientSender = new ClientSender(stationCollection);
+		stationCollection.initialize();
+		Thread th = new Thread(new ClientTimeChecker());
+		th.start();
+		
+	}
+
+}

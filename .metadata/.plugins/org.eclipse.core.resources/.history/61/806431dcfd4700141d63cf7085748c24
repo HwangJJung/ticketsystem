@@ -1,0 +1,17 @@
+package client;
+
+import station.Station;
+
+import station.DaejeonStation;
+import station.GwangjuStation;
+import station.GyeongjuStation;
+import station.SeoulStation;
+import station.Station;
+import station.WonjuStation;
+
+
+public class StationClient extends AbstractClient {
+	
+	Station startStation;
+	Station arrivalStation;
+}

@@ -1,0 +1,29 @@
+package station;
+
+import client.Client;
+
+public class SeoulStation implements StationFactory {
+	
+	
+	Client client;
+	
+	public SeoulStation(Client client) {
+		this.client = client;
+	}
+
+	
+	@Override
+	public Station setStartStation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Station setArrivalStation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+
+}

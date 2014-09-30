@@ -1,0 +1,42 @@
+package station;
+
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import client.AbstractClient;
+
+public class ThreadingStationFactroy {
+	
+	
+	
+	ArrayList<Station> stationList;
+	ArrayList<Thread> threadList = new ArrayList<Thread>;
+	
+	
+	public ArrayList<Station> getStationList() {
+		return stationList;
+	}
+
+
+
+	public void setStationList(ArrayList<Station> stationList) {
+		this.stationList = stationList;
+	}
+	
+	
+
+
+	public void makeThread() {
+
+		Iterator<Station> it = stationList.iterator();
+		while (it.hasNext()) {
+
+			Station station = it.next();
+			Thread new Thread(station);
+			
+		}
+	}
+
+
+}

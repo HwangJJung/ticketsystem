@@ -1,0 +1,56 @@
+package station;
+
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class ThreadingStationFactroy {
+	
+	
+	
+	ArrayList<Station> stationList;
+	ArrayList<Thread> threadList = new ArrayList<Thread>();
+	
+	
+	public ArrayList<Station> getStationList() {
+		return stationList;
+	}
+
+
+
+	public void setStationList(ArrayList<Station> stationList) {
+		this.stationList = stationList;
+		System.out.println("스테이션 스레드드를 지정해주고 나서는 큐가 엠티인가? " +  stationList.get(0).stationQueue.isEmpty());
+		
+	}
+	
+	public void test() {
+		System.out.println("스레드로 만들기 에느느느느는 큐가 엠티인가? " +  stationList.get(0).stationQueue.isEmpty());
+		
+		threadList.add(new Thread(stationList.get(0)));
+		System.out.println("스레드로 만들고 나서 큐가 엠티인가? " +  stationList.get(0).stationQueue.isEmpty());
+		
+		threadList.get(0).start();
+		System.out.println("스레드를 실행시키고나서 나서 큐가 엠티인가? " + stationList.get(0).stationQueue.isEmpty());
+		
+	}
+	
+	public void makeThread() {
+
+		Iterator<Station> it = stationList.iterator();
+		while (it.hasNext()) {
+			Station station = it.next();
+			threadList.add(new Thread(station));
+		}
+	}
+	
+	public void startThread() {
+		Iterator<Thread> it = threadList.iterator();
+		while (it.hasNext()) {
+			Thread thread = it.next();
+			thread.start();
+			
+		}
+	}
+
+}

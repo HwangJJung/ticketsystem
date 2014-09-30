@@ -1,0 +1,44 @@
+package station;
+
+import MallardDuck;
+import QuackCounter;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import client.AbstractClient;
+
+public class ThreadingStationFactroy {
+	
+	
+	
+	ArrayList<Station> stationList;
+	
+	
+	
+	public ArrayList<Station> getStationList() {
+		return stationList;
+	}
+
+
+
+	public void setStationList(ArrayList<Station> stationList) {
+		this.stationList = stationList;
+	}
+	
+	
+
+
+	public void makeThread() {
+
+		Iterator<Station> it = stationList.iterator();
+		while (it.hasNext()) {
+
+			Station station = it.next();
+			new Thread(station);
+			
+		}
+	}
+
+
+}

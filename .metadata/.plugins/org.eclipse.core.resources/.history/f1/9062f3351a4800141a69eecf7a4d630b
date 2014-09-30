@@ -1,0 +1,40 @@
+package client;
+
+import exception.SameStationException;
+import station.Station;
+import station.StationCollection;
+
+public class ClientSender {
+	
+	AbstractClient client;
+	StationCollection stationCollection;
+	Station station;
+	
+	public ClientSender() {
+		this.stationCollection  = new StationCollection();
+		stationCollection.initialize();
+	}
+	
+	
+	
+	public void sendClientToStation(AbstractClient client) {
+		
+		this.client = client;
+		String startStation = client.startStation;
+		String arrivalStation = client.arrivalStation;
+		
+		if(startStation.equals(arrivalStation)) {
+			try {
+				throw new SameStationException();
+			}catch (SameStationException e) {
+				e.printStackTrace();
+			}
+		}
+
+		station = stationCollection.getStation(startStation , true);
+		station.add(client);
+		client.RecordRealEnqueueTime();
+		
+	}
+
+}

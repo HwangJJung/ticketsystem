@@ -1,0 +1,7 @@
+package clerk;
+
+public interface Observer {
+	
+	public void update(int AlphaState, int BetaState, int thirdState);
+	
+}

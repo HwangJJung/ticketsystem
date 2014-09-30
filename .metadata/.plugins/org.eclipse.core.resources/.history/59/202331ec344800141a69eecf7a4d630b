@@ -1,0 +1,7 @@
+package clerk;
+
+public interface StateObservable {
+
+	public void notifyObservers();
+	
+}

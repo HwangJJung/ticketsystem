@@ -1,0 +1,39 @@
+package process;
+
+import station.StationCollection;
+import station.ThreadingStationFactroy;
+
+
+public class Simulator {
+
+	public static void main(String[] args) {
+		
+		
+		Simulator simulator = new Simulator();
+		StationCollection stationcollection = new StationCollection();
+		ClientSender clientsender = new ClientSender(stationcollection);
+		Thread th = new Thread(new ClientTimeChecker(clientsender));
+		th.start();
+		
+		simulator.simulate(stationcollection);
+
+	}
+	
+	public void simulate(StationCollection stationcollection) {
+		
+		ClientSender clientsender = new ClientSender(stationcollection);
+		Thread th = new Thread(new ClientTimeChecker(clientsender));
+		th.start();
+		
+		ThreadingStationFactroy threadFactroy = new ThreadingStationFactroy();
+		System.out.println("스레드펙토리에 넣기 전에는 큐가 엠티인가?  " + stationcollection.getStationList().get(0).stationQueue.isEmpty());
+		
+		threadFactroy.setStationList(stationcollection.getStationList());
+		threadFactroy.test();
+		
+	//	threadFactroy.makeThread();
+	//	threadFactroy.startThread();
+		
+	}
+
+}

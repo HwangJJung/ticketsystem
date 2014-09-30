@@ -1,0 +1,27 @@
+package client;
+
+import java.util.Iterator;
+
+public class StationClientQueue extends AbstractClientQueue{
+
+	public void Order() {
+		Iterator<AbstractClient> iterator = clients.iterator();
+		while (iterator.hasNext()) {
+			Client client = (Client)iterator.next();
+			 //  client.Order();
+		}
+	}
+
+	public void enterStation() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void initialize() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+}

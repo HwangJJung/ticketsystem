@@ -1,0 +1,48 @@
+package client;
+
+import org.apache.commons.lang3.time.StopWatch;
+
+public abstract class AbstractClient implements haveStopWatch {
+
+	String startStation;
+	String arrivalStation;
+	String name;
+	int ticketingTime;
+	int arrivalTime;
+	StopWatch stopWatch;
+	
+	long realEnqueueTime;
+	long realTicketingTime;
+	
+	
+	
+	public int getArrivalTime() {
+		return arrivalTime;
+	}
+	
+	@Override
+	public void timerStart() {
+		stopWatch.start();
+	}
+
+	public int getRealEnqueueTime() {
+		return realEnqueueTime;
+	}
+
+	public void RecordRealEnqueueTime() {
+		stopWatch.split();
+		this.realEnqueueTime = stopWatch.getSplitTime();
+	}
+
+	public int getRealTicketingTime() {
+		return realTicketingTime;
+	}
+
+	public void setRealTicketingTime(int realTicketingTime) {
+		this.realTicketingTime = realTicketingTime;
+	}
+	
+	
+	
+	
+}

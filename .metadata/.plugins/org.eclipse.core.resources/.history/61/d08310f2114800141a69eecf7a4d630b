@@ -1,0 +1,18 @@
+package station;
+
+public class NoEntryStationException extends RuntimeException{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	NoEntryStationException() {
+		super();
+	}
+	
+	NoEntryStationException(String message) {
+		super(message);
+	}
+	
+}

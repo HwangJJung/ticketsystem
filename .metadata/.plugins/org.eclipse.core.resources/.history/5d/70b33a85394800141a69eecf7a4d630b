@@ -1,0 +1,51 @@
+package process;
+import java.util.Iterator;
+
+import client.AbstractClient;
+import client.ClientQueue;
+import client.haveStopWatch;
+
+
+
+public class ClientTimeChecker implements Runnable {
+	
+	int currentTime = 0;
+	ClientSender clientSender = new ClientSender();
+	ClientQueue clientQueue = new ClientQueue();
+	boolean islive = true;
+	
+	@Override
+	public void run() {
+	
+		while(islive) {
+			
+		
+			Iterator<AbstractClient> it = clientQueue.getList().iterator();
+			while (it.hasNext()) {
+
+				AbstractClient client = it.next();
+				if(client.getArrivalTime() == currentTime) {
+					clientSender.sendClientToStation(client);	
+					System.out.println(client.getName() + "enqueue " + client.getArrivalTime() + " is same" + currentTime);	
+				}
+			}
+			
+			currentTime++;
+			if (currentTime > 10) {
+				console(clientQueue);
+				islive = false;
+			}
+			
+			try {
+				Thread.sleep(1000); //1초마다
+			} catch ( InterruptedException e) {}
+			System.out.println("-");
+			
+		}
+		
+	}
+	
+	public void console(haveStopWatch hsw) {
+		hsw.print();
+	}
+}

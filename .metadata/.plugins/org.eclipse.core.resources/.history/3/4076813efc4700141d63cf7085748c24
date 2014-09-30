@@ -1,0 +1,8 @@
+package client;
+
+public abstract class AbstractClient {
+
+	String name;
+	int ticketingTime;
+	StopWatch stopWatch;
+}

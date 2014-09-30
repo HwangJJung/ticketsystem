@@ -1,0 +1,30 @@
+package station;
+
+import java.util.ArrayList;
+
+public class ThreadingStationFactroy {
+	
+	
+	
+	ArrayList<Station> stationList;
+	
+	
+	
+	public ArrayList<Station> getStationList() {
+		return stationList;
+	}
+
+
+
+	public void setStationList(ArrayList<Station> stationList) {
+		this.stationList = stationList;
+	}
+
+
+
+	public Thread makeThread(Station station) {
+		return new Thread(station);
+	}
+
+
+}

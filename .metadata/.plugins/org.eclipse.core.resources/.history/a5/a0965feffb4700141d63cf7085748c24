@@ -1,0 +1,11 @@
+package client;
+
+import station.Station;
+
+public class StationClient  {
+	String name;
+	int arrivalTime;
+	int ticketingTime;
+	Station startStation;
+	Station arrivalStation;
+}

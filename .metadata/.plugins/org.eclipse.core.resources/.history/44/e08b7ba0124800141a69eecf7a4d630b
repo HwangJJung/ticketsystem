@@ -1,0 +1,65 @@
+package station;
+
+import java.util.*;
+
+
+public class StationCollection implements initializable{
+
+	interface STATION {
+		Integer SEOUL = 0, 
+		DAEJEON = 1, 
+		GWANGJU = 2, 
+		CHUNCHEON = 3, 
+		WONJU = 4,
+		ASAN = 5,
+		GYEONGJU= 6;
+	}
+	
+	HashMap<String , Integer > stationMap = new HashMap<String ,Integer>();
+	ArrayList<Station> stationList = new ArrayList<Station>();
+	
+	public void initialize() {
+		MapInitialize();
+		ListInitalize();
+	}
+	
+	public void MapInitialize() {
+		
+		stationMap.put("Seoul", STATION.SEOUL);
+		stationMap.put("Chuncheon" , STATION.CHUNCHEON);
+		stationMap.put("Wonju" , STATION.WONJU);
+		stationMap.put("Asan" , STATION.ASAN);
+		stationMap.put("Gwangju" , STATION.GWANGJU);
+		stationMap.put("Daejeon" , STATION.DAEJEON);
+		stationMap.put("Gyeongju" , STATION.GYEONGJU);
+
+	}
+	
+	public void ListInitalize(){
+		stationList.add( STATION.SEOUL, new SeoulStation());
+		stationList.add( STATION.DAEJEON, new DaejeonStation());
+		stationList.add( STATION.GWANGJU , new GwangjuStation());
+		stationList.add( STATION.ASAN , new AsanStation());
+		stationList.add( STATION.WONJU , new WonjuStation());
+		stationList.add( STATION.CHUNCHEON , new ChuncheonStation());
+		stationList.add( STATION.GYEONGJU , new GyeongjuStation());
+		
+	}
+	public Station getStation(String name , boolean isStartStation) {
+		if (stationMap.containsKey(name)) {
+			int index = stationMap.get(name);
+			return (Station)stationList.get(index);
+		}else {
+			if (isStartStation) {
+				try {
+					throw new NoEntryStartStationException("해당 역이 없습니다.");
+				}catch(NoEntryStartStationException e) {
+						e.printStackTrace();
+						return null;
+				}
+				
+			}
+		
+		}
+	}
+}

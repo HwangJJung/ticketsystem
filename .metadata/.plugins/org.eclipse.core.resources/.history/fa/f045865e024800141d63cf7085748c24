@@ -1,0 +1,11 @@
+package station;
+
+import java.util.ArrayList;
+
+public class StationList {
+	
+	ArrayList<Station> stationList = new ArrayList<Station>();
+	
+	
+
+}

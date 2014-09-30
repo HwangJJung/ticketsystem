@@ -1,0 +1,25 @@
+package station;
+
+import java.util.ArrayList;
+
+public class StationList {
+	
+	ArrayList<Station> stationList = new ArrayList<Station>();
+	
+	
+	public StationList() {
+
+		stationList.add(new AsanStation());
+		stationList.add(new SeoulStation());
+		stationList.add(new GwangjuStation());
+		stationList.add(new ChuncheonStation());
+		stationList.add(new WonjuStation());
+		stationList.add(new GyeongjuStation());
+	}
+	
+	
+	public void initialize() {
+		
+	}
+
+}

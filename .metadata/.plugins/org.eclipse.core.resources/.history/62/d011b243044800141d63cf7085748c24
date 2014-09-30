@@ -1,0 +1,22 @@
+package temporary;
+import station.StationList;
+import client.ClientQueue;
+import client.ClientTimeChecker;
+
+public class Simulator {
+
+	public static void main(String[] args) {
+	
+		StationList stationlist = new StationList();
+	
+		stationlist.initialize();
+		
+		Thread th = new Thread(new ClientTimeChecker());
+		th.start();
+		
+		
+	
+		
+	}
+
+}

@@ -1,0 +1,10 @@
+package station;
+
+public class ThreadingStationFactroy {
+	
+	
+	public Thread makeThread(Station station) {
+		// TODO Auto-generated method stub
+		return new Thread(station);
+	}
+}

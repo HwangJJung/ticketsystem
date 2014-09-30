@@ -1,0 +1,7 @@
+package clerk;
+
+public interface Subject {
+
+	public void notifyBoxChecker();
+	
+}

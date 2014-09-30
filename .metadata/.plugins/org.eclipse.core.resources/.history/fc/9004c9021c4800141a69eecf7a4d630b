@@ -1,0 +1,65 @@
+package client;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import station.initializable;
+
+//맨처음 클라이언트 데이터를 받는 큐 
+// 그리고 역 대기실 마다 있는 큐
+// 그리고 플랫폼에 있는 큐
+// 스트래티지 패턴으로 리팩토링하기.
+// 또는 메소드 템플릿 패턴인데..봐바야겠음.
+
+
+
+public abstract class AbstractClientQueue implements initializable, haveStopWatch {
+
+
+	ArrayList<AbstractClient> clients = new ArrayList<AbstractClient>();
+
+
+	public void add(AbstractClient abstractClient) {
+		clients.add(abstractClient);
+	}
+	
+	public void remove(AbstractClient abstractClient) {
+		clients.remove(abstractClient);
+	}
+	
+	public ArrayList<AbstractClient> getList() {
+		return clients;
+	}
+	
+	public AbstractClient get(int i) {
+		return clients.get(i);
+	}
+	
+	public void sort() {
+	//	ClientComparator comparator = new ClientComparator();
+		// Collection.sort(clients,comparator);
+		
+	}
+	public int getSize() {
+		return clients.size();
+	}
+	
+	@Override
+	public void timerStart() {
+		Iterator<AbstractClient> iterator = clients.iterator();
+		while (iterator.hasNext()) {
+			AbstractClient client = (AbstractClient)iterator.next();
+			client.timerStart();	
+		}
+	}
+	public void print() {
+		Iterator<AbstractClient> iterator = clients.iterator();
+		while (iterator.hasNext()) {
+			AbstractClient client = (AbstractClient)iterator.next();
+			client.print();
+		}
+		return null;
+	}
+	public String toString() {
+		
+	}
+}

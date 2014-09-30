@@ -1,0 +1,9 @@
+package station;
+
+public class SeoulStation extends Station{
+	
+	public SeoulStation() {
+		this.name = "SEOUL 역입니다. !!!!";
+	}
+
+}

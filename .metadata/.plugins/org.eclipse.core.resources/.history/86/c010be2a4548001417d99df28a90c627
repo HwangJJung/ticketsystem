@@ -1,0 +1,31 @@
+package process;
+
+import station.StationCollection;
+import station.ThreadingStationFactroy;
+
+
+public class Simulator {
+
+	public static void main(String[] args) {
+		
+		
+		Simulator simulator = new Simulator();
+		StationCollection stationcollection = new StationCollection();
+		
+		simulator.simulate(stationcollection);
+
+	}
+	
+	public void simulate(StationCollection stationcollection) {
+		
+		ClientSender clientsender = new ClientSender(stationcollection);
+		Thread th = new Thread(new ClientTimeChecker(clientsender));
+		th.start();
+		ThreadingStationFactroy threadFactroy = new ThreadingStationFactroy();
+		threadFactroy.setStationList(stationcollection.getStationList());
+		threadFactroy.makeThread();
+		threadFactroy.startThread();
+		
+	}
+
+}

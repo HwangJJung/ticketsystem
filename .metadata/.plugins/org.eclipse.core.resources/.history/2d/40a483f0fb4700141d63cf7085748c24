@@ -1,0 +1,18 @@
+package client;
+
+import station.Station;
+
+import station.DaejeonStation;
+import station.GwangjuStation;
+import station.GyeongjuStation;
+import station.SeoulStation;
+import station.Station;
+import station.WonjuStation;
+
+
+public class StationClient  {
+	String name;
+	int ticketingTime;
+	Station startStation;
+	Station arrivalStation;
+}

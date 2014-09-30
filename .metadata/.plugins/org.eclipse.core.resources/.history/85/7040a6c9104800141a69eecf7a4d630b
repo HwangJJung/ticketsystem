@@ -1,0 +1,11 @@
+package station;
+
+public class NoEntryStationException extends RuntimeException{
+	
+	
+	
+	public NoEntryStationException() {
+		// TODO Auto-generated constructor stub
+	}
+	
+}

@@ -1,0 +1,44 @@
+package client;
+
+import station.Station;
+
+import station.DaejeonStation;
+import station.GwangjuStation;
+import station.GyeongjuStation;
+import station.SeoulStation;
+import station.Station;
+import station.WonjuStation;
+
+// 지금 스테이션이 클라이언트 안에 들어와버림. 
+// 스테이션이 정보가 아니라 역자체를 의미하는 클래스인 이상 의존관계가 이상해진다.
+// 그냥 스테이션 클라이언트를 따로 만들지 말고, 바로 스테이션 큐에 넣어버리는게 좋을 것 같다. 
+
+public class StationClient extends AbstractClient {
+	
+	Station startStation;
+	Station arrivalStation;
+	
+	public Station getStartStation() {
+		return startStation;
+	}
+
+	public void setStartStation(Station startStation) {
+		this.startStation = startStation;
+	}
+
+	public Station getArrivalStation() {
+		return arrivalStation;
+	}
+
+	public void setArrivalStation(Station arrivalStation) {
+		this.arrivalStation = arrivalStation;
+	}
+
+	public void Order() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+}
