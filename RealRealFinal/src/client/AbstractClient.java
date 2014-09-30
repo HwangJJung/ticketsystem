@@ -15,6 +15,7 @@ public abstract class AbstractClient implements haveStopWatch {
 	long realEnqueueTime =0;
 	long realTicketingTime =0;
 	long waitTime = 0;
+    long realTicketTingTime = 0;
 	
 	public String getStartStation() {
 		return startStation;
@@ -59,7 +60,7 @@ public abstract class AbstractClient implements haveStopWatch {
 
 	public void RecordRealTicketingTime() {
 		stopWatch.split();
-		this.realEnqueueTime = stopWatch.getSplitTime() - this.waitTime;
+		this.realTicketTingTime = stopWatch.getSplitTime() - this.waitTime;
 	}
 	
 	public int getTicketingTime() {

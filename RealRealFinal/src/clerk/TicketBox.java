@@ -1,6 +1,7 @@
 package clerk;
 
 import client.AbstractClient;
+import client.StationClientQueue;
 
 public class TicketBox implements StateObservable{
 	
@@ -16,6 +17,9 @@ public class TicketBox implements StateObservable{
 
 	AbstractClient client = null;
 	Observable observable;
+	AbstractClient prevClient = null;
+	
+	StationClientQueue stationQueue;
 	
 	
 	public int getboxState() {
@@ -25,33 +29,62 @@ public class TicketBox implements StateObservable{
 		this.client = client;
 	}
 	
-	public TicketBox(String name) {
+	public TicketBox(String name , StationClientQueue stationQueue) {
 		this.name = name;
+		this.stationQueue = stationQueue;
 		observable = new Observable(this);
+	}
+	private void initialize() {
+		isLive = true;
+		boxState = EMPTY;
+		client = null;
+		prevClient = null;
+	}
+	
+	
+	private void isSameClient(AbstractClient prevClient , AbstractClient client) {
+		
+		try { if(prevClient.equals(client)) {
+			System.out.println(prevClient.getName() + " 랑 " + client.getName());
+			System.out.println("아까 그분같은데 왜 또 오셨어요. 그만오세요");
+			initialize();	
+		}
+		else {
+			setClient(client);
+			client.RecordWaitTime();
+			System.out.println("어서오세요." +client.getName()+"고객님. 티켓발부 해드릴게요.");
+			System.out.println("이곳은" + this.name + "티켓박스입니다.");
+			takeOrder();
+		} } catch (NullPointerException e) {
+			setClient(client);
+			client.RecordWaitTime();
+			System.out.println("어서오세요." +client.getName()+"고객님. 티켓발부 해드릴게요.");
+			System.out.println("이곳은" + this.name + "티켓박스입니다.");
+			takeOrder();	
+		}
 	}
 
 	public void isCameCustomer(AbstractClient client) {
-		System.out.println("hahahahaha");
 		if (boxState == EMPTY) {
 			boxState = HAS_CUSTOMER;
 			setClient(client);
-			client.RecordWaitTime();
-			System.out.println("어서오세요. 티켓발부 해드릴게요.");
-			takeOrder();
+			isSameClient(prevClient, client);
 		} else if (boxState == HAS_CUSTOMER) {
 			System.out.println("다른 분 이후에 안내도와드릴게요. ");	
 		} else if (boxState == SOLD) {
-			System.out.println("잠시만요, 티켓 발급 중입니다.");
+			System.out.println("잠시만요," + this.client.getName()+ "고객님이 티켓 발급 중입니다.");
+
 		}
 	}
 	
 	private void takeOrder() {
+		stationQueue.dequeueClient();
 		if (boxState == EMPTY) {
 			System.out.println("줄 서서 기다리셔야해요.");
 		} else if (boxState == HAS_CUSTOMER) {
 			boxState = SOLD;
-			ticketing();
 			System.out.println("멀리 가시네요~ 티켓 준비중이니 잠시만 기다려주세요.");	
+			ticketing();
 		} else if (boxState == SOLD) {
 			System.out.println("잠시만요, 티켓 발급 중입니다.");
 		}
@@ -59,21 +92,23 @@ public class TicketBox implements StateObservable{
 	
 
 	private void ticketing() {
-		System.out.println("잠시 기다립시다.스레드 불러서 잠시 멈출게요.");
+		System.out.println("잠시 기다려주세요. 기계가 티켓을  출력 중입니다. 약 "+ client.getTicketingTime() + "초정도 소요됩니다." ); 
 		
-		Thread t = new Thread(new TiketBoxMachine(ticket , client.getTicketingTime()));
+		Thread t = new Thread(new TiketBoxMachine(ticket , client.getTicketingTime() , this));
 	
 		t.setDaemon(true);
 		t.start();
-		client.RecordRealTicketingTime();
-		StateIsEmpty();
+		
 	}
-
 	
 	public void StateIsEmpty() {
+		client.RecordRealTicketingTime();
 		boxState = ticket.state;
-		setClient(null);
-		notifyObservers();
+		try{ if(client.equals(null)) {System.out.println("여기 오긴오나?22");}
+			else{notifyObservers();
+			}
+		}
+		catch(NullPointerException e) {notifyObservers();}
 	}
 	
 	@Override

@@ -2,8 +2,9 @@ package process;
 import java.util.Iterator;
 
 import client.AbstractClient;
-import client.ClientQueue;
 import client.haveStopWatch;
+import editable.ClientQueue;
+import editable.Simulator;
 
 
 
@@ -25,20 +26,19 @@ public class ClientTimeChecker implements Runnable {
 		
 			Iterator<AbstractClient> it = clientQueue.getList().iterator();
 			while (it.hasNext()) {
-
 				AbstractClient client = it.next();
 				if(client.getArrivalTime() == currentTime) {
 					clientSender.sendClientToStation(client);	
-					System.out.println(client.getName() + "enqueue " + client.getArrivalTime() + " is same" + currentTime);	
+					System.out.println(client.getName() + "님이 " + client.getArrivalTime() 
+							+ "초가 되서 역에 도착하셨습니다.");	
 				}
 			}
 			
 			currentTime++;
-			if (currentTime > 20) {
+			if (currentTime > Simulator.SIMULATION_TIME) {
 				console(clientQueue);
 				isLive = false;
 			}
-			
 			try {
 				Thread.sleep(1000); //1초마다
 			} catch ( InterruptedException e) {}

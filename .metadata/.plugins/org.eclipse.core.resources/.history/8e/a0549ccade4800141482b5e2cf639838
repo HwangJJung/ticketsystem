@@ -1,0 +1,31 @@
+package clerk;
+
+public class TiketBoxMachine implements Runnable {
+		Ticket ticket;
+		int ticketingTime;
+		TicketBox ticketbox;
+	public TiketBoxMachine(Ticket ticket, int ticketingTime , TicketBox ticketbox) {
+		this.ticket = ticket;
+		this.ticketingTime = ticketingTime;
+		this.ticketbox = ticketbox;
+	}
+	public void run() {
+		try {
+			Thread.sleep(ticketingTime * 1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ticket.state = changeStateToEmpty();
+		System.out.println("발급 완료 어서가시죠.");
+	
+		ticketbox.Client.RecordRealTicketingTime();
+		ticketbox.prevClient = ticketbox.client;
+		ticketbox.StateIsEmpty();
+		
+	}
+	
+	private int changeStateToEmpty() {
+		return TicketBox.EMPTY;
+	}
+}

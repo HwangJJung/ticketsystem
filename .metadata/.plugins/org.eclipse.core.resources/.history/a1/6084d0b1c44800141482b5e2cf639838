@@ -1,0 +1,20 @@
+package process;
+
+import station.StationCollection;
+
+
+public class Simulator {
+
+	public static int SIMULATION_TIME = 30;
+
+	public static void main(String[] args) {
+		
+		final int SIMULATION_TIME = 30; // sec
+		final int CHECK_INTERVAL =2; // sec
+	
+		StationCollection stationcollection = new StationCollection();
+		ClientSender clientsender = new ClientSender(stationcollection);
+		Thread th = new Thread(new ClientTimeChecker(clientsender));
+		th.start();
+	}
+}

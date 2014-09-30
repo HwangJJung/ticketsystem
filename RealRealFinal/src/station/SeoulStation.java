@@ -1,5 +1,6 @@
 package station;
 
+import process.Station;
 import client.AbstractClient;
 
 public class SeoulStation extends Station{
@@ -10,8 +11,7 @@ public class SeoulStation extends Station{
 	
 	public void add(AbstractClient abstractClient) {
 		stationQueue.add(abstractClient);
-		print();
-		System.out.println("이역의 이름은 " + name + "인지도 모르겠습니다.");
+		System.out.println(" 현재 클래스는 SeoulStation 으로 고객이 서울역에 들어왔습니다.");
 	}
 	
 

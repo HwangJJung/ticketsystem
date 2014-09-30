@@ -12,47 +12,53 @@ public class BoxChecker implements Observer  {
 	// 지금 한쪽만 옵저버 쓰고 대기 큐는 안쓰니까, 완전 코드가 꼬여버렸음.
 	// 결국 다시 하는 수밖에 없음...;ㅅ;
 	
-	private AbstractClient client = null;
+	private AbstractClient client;
 	private StationClientQueue stationQueue;
+	private TicketBox ticketbox ;
 	
-	public void setQueue(StationClientQueue stationQueue) {
+	public void setQueue(StationClientQueue stationQueue, TicketBox ticketBox) {
 		this.stationQueue = stationQueue;
-		if ( stationQueue.isEmpty()) {System.out.println("BoxChecker.setQueue.if: 큐가 널임.");}
+		this.ticketbox = ticketBox;
+		if ( stationQueue.isEmpty()) {System.out.println("BoxChecker: 고객이 없답니다.");}
 		else {
-			System.out.println("BoxChecker.setQueue.if: 큐가 널이 아님.");
-			setClient(stationQueue.get(0));
+			System.out.println("BoxChecker: 고객이 있습니다.");
+			try{
+				if(ticketbox .equals(null)) {}
+				else{update(ticketbox);}
+			} catch (NullPointerException e) {}
 		}
 	}
 	
-	public void setClient(AbstractClient client) {
+	public void setQueue(StationClientQueue stationQueue, TicketBox[] boxes) {
+		TicketBox ticketbox = findEmptyBox(boxes);
+		setQueue(stationQueue,ticketbox);
+	}
+
+	
+	private TicketBox findEmptyBox(TicketBox[] boxes) { 
+		for(int i=0; i<boxes.length; i++) {
+			if(boxes[i].getboxState() == TicketBox.EMPTY){
+				return boxes[i];
+			}
+		}
+		return null;
+	}
+	
+	
+	private void setClient(AbstractClient client) {
 		this.client =client;
 	}
 	
-	public void updateClient() {
-		try{
-			if(client.equals(null)) {
-				System.out.println("BoxChecker.setClient.if: 클라가 null임");
-			}
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-			System.out.println("오늘은 아예 손님이 없나봅니다." );
-		}
-		
-		if (stationQueue.isEmpty()) {
-			System.out.println("해당 역에 아무런 승객이 없습니다.");
-		
-		} else {
-			client = stationQueue.targetClient();
-			client.print();
-		}
-	}
-
 	@Override
 	public void update(TicketBox ticketBox) {
-			updateClient();
-			ticketBox.isCameCustomer(client);
+		
+		try { setClient(stationQueue.deliverClient());
+		ticketBox.isCameCustomer(client); }
+		catch (NullPointerException e){}
 	}
-
+	
+	
+	
 	
 	
 }

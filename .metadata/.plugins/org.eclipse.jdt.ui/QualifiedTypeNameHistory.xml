@@ -22,4 +22,9 @@
 <fullyQualifiedTypeName name="org.apache.commons.lang3.time.StopWatch"/>
 <fullyQualifiedTypeName name="station.initializable"/>
 <fullyQualifiedTypeName name="client.ClientQueue"/>
+<fullyQualifiedTypeName name="station.ChuncheonStation"/>
+<fullyQualifiedTypeName name="station.GwangjuStation"/>
+<fullyQualifiedTypeName name="process.Simulator"/>
+<fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+<fullyQualifiedTypeName name="java.lang.IndexOutOfBoundsException"/>
 </qualifiedTypeNameHistroy>

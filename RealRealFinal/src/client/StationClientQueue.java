@@ -9,10 +9,8 @@ public class StationClientQueue extends AbstractClientQueue{
 	
 	public boolean isEmpty() {
 		if (clients.isEmpty()) {
-			System.out.println("역클라큐, clients empty.");
 			return true;
 		} else {
-			System.out.println("clients has a client.");
 			return false;
 		}
 	}
@@ -22,11 +20,17 @@ public class StationClientQueue extends AbstractClientQueue{
 		clients.clear();
 	}
 	
-	public AbstractClient targetClient() {
-		AbstractClient temp = clients.get(0);
-		clients.remove(0);
-		temp.print();
-		return temp;
+	public AbstractClient deliverClient() {
+	try{	AbstractClient temp = clients.get(0);
+		return temp; 
+		}catch (IndexOutOfBoundsException e){
+			return null;
+		}
 	}
 	
+	
+	public void dequeueClient() {
+		AbstractClient temp = clients.get(0);
+		clients.remove(temp);
+	}
 }

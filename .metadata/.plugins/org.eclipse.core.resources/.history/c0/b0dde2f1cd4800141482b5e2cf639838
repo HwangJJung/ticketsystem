@@ -1,0 +1,8 @@
+package station;
+
+public class GwangjuStation extends Station {
+
+	public GwangjuStation() {
+		this.name = "광주";
+	}
+}

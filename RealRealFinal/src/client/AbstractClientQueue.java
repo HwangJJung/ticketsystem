@@ -36,12 +36,13 @@ public abstract class AbstractClientQueue implements haveStopWatch {
 	public AbstractClient get(int i) {
 		return clients.get(i);
 	}
-	
+	/*
 	public void sort() {
-	//	ClientComparator comparator = new ClientComparator();
-		// Collection.sort(clients,comparator);
+		ClientComparator comparator = new ClientComparator();
+		 Collection.sort(clients,comparator);
 		
 	}
+	*/
 	public int getSize() {
 		return clients.size();
 	}
@@ -54,6 +55,7 @@ public abstract class AbstractClientQueue implements haveStopWatch {
 			client.timerStart();	
 		}
 	}
+	
 	public void print() {
 		Iterator<AbstractClient> iterator = clients.iterator();
 		while (iterator.hasNext()) {

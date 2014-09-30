@@ -3,9 +3,11 @@ package clerk;
 public class TiketBoxMachine implements Runnable {
 		Ticket ticket;
 		int ticketingTime;
-	public TiketBoxMachine(Ticket ticket, int ticketingTime) {
+		TicketBox ticketbox;
+	public TiketBoxMachine(Ticket ticket, int ticketingTime , TicketBox ticketbox) {
 		this.ticket = ticket;
 		this.ticketingTime = ticketingTime;
+		this.ticketbox = ticketbox;
 	}
 	public void run() {
 		try {
@@ -16,6 +18,10 @@ public class TiketBoxMachine implements Runnable {
 		}
 		ticket.state = changeStateToEmpty();
 		System.out.println("발급 완료 어서가시죠.");
+	
+		
+		ticketbox.prevClient = ticketbox.client;
+		ticketbox.StateIsEmpty();
 		
 	}
 	

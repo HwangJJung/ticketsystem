@@ -1,0 +1,106 @@
+package process;
+
+import clerk.BoxChecker;
+import clerk.TicketBox;
+import client.AbstractClient;
+import client.StationClientQueue;
+import editable.Simulator;
+
+public abstract class Station  {
+	
+	// 역마다 클라이언트 큐.
+	
+	public StationClientQueue stationQueue = new StationClientQueue();
+	public String name= "초깃값";
+	
+	// 3개의 티켓박스.
+	TicketBox[] boxes = { new TicketBox("Alpha") , new TicketBox("Betha") , new TicketBox("Gamma") };
+	BoxChecker boxChecker = new BoxChecker();
+	
+	
+	
+	public Station() {
+	
+		Thread checker = new Thread ( new queueChecker());
+		checker.start();
+	}
+	
+	public void match() {
+		for (int i=0; i < boxes.length; i++) {
+			if (boxes[i].getboxState() == TicketBox.EMPTY ) {
+				System.out.println("match 내부입니다." +i+"번째 티켓박스가 비었습니다.");
+				System.out.println(boxes[i].name + boxes[i].getboxState() + "상태입니다.");
+			   boxChecker.update(boxes[i]);
+			}
+		}
+	}
+	
+	
+	public void add(AbstractClient abstractClient) {
+		stationQueue.add(abstractClient);		
+	}
+	
+	
+	public StationClientQueue getStationQueue() {
+		return stationQueue;
+	}
+
+	class queueChecker implements Runnable {
+		
+		public void run() {
+			boolean live = true;
+			boolean NoOneinStation = true;
+			
+			while(live) {
+				
+				if(name.equals("서울역")) {
+					System.out.println("이역의 이름은 " + name + "입니다. ");
+				} else{
+					System.out.println("이 역은 "+name+"역으로 서울역이 아닙니다. 스레드를 잠재웁니다. ");
+					live= false;
+				}
+				
+				while(NoOneinStation) {
+					
+					if(stationQueue.isEmpty()) { }
+					else {
+					NoOneinStation = false;
+					}
+				
+				}
+				
+				boxChecker.setQueue(stationQueue,boxes[0]);
+				
+				try {
+					Thread.sleep(Simulator.CHECK_INTERVAL * 1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				System.out.println("지금부턴 박스들을 넘깁니다.");
+				boxChecker.setQueue(stationQueue,boxes);
+				
+				if (isTicketBoxFull()) {} 
+				else {
+					if(stationQueue.isEmpty()) {} 
+					else {
+					 match();
+					}
+				}
+			}
+		}
+		
+		private  boolean isTicketBoxFull() {
+			if (boxes[0].getboxState() * boxes[1].getboxState() * boxes[2].getboxState() != 0)
+			{
+				return true; 
+			}
+			else { return false;}
+		}
+		
+	}
+
+
+	// 하나의 플랫폼 큐
+	
+	// 연결된 역의 리스트.
+}

@@ -1,9 +1,8 @@
 package process;
 
 import client.AbstractClient;
+import editable.StationCollection;
 import exception.SameStationException;
-import station.Station;
-import station.StationCollection;
 
 public class ClientSender {
 	
@@ -32,8 +31,6 @@ public class ClientSender {
 
 		station = stationCollection.getStation(startStation , true);
 		station.add(client);
-		System.out.println(station.name);
-		System.out.println("클라이언트 센더에서는 큐가 엠티인가?  " + station.stationQueue.isEmpty());
 		client.RecordRealEnqueueTime();
 		client.print();
 		

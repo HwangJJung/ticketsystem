@@ -1,0 +1,22 @@
+package editable;
+
+import process.ClientSender;
+import process.ClientTimeChecker;
+import station.StationCollection;
+
+
+public class Simulator {
+
+	public static final int SIMULATION_TIME = 30; // 몇 초동안 시뮬레이션을 돌릴 것인지를 정합니다.
+	public static final int CHECK_INTERVAL = 4; // 몇 초마다 역의 고객수를 확인할 것인지를 정합니다.
+
+	public static void main(String[] args) {
+		
+		
+		StationCollection stationcollection = new StationCollection();
+		ClientSender clientsender = new ClientSender(stationcollection);
+		Thread th = new Thread(new ClientTimeChecker(clientsender));
+		th.start();
+		
+	}
+}
